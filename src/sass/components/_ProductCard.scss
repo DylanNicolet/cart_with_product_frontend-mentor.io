@@ -1,0 +1,8 @@
+@use "../utils" as u;
+
+.products-card {
+    &__img {
+        width: 100px;
+        height: 100px;
+    }
+}
