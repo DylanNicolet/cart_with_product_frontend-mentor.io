@@ -1,1 +1,13 @@
 @use "../utils" as u;
+
+.homepage {
+	background-color: u.$color-secondary-50;
+	padding: 1.3rem 1.5rem;
+
+	&__title {
+		color: u.$color-secondary-900;
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-bottom: 1.9rem;
+	}
+}

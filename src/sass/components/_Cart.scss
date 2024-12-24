@@ -1,1 +1,32 @@
 @use "../utils" as u;
+
+.cart {
+	background-color: white;
+	padding: 1.5rem;
+	min-height: 18.69rem;
+	margin-top: 1.7rem;
+	border-radius: 0.75rem;
+	text-align: center;
+
+	&__title {
+		color: u.$color-primary;
+		font-size: 1.5rem;
+		font-weight: 700;
+		line-height: 2rem;
+		text-align: left;
+		margin-bottom: 2.5rem;
+	}
+
+	&__empty-icon {
+		margin: auto;
+	}
+
+	&__message {
+		color: u.$color-secondary-500;
+		font-size: 0.88rem;
+		font-weight: 600;
+		line-height: 1.19rem;
+		text-align: center;
+		margin-top: 0.7rem;
+	}
+}

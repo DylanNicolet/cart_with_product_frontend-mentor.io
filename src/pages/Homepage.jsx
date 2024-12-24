@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductsCard from "../components/ProductsCard"
 import data from "../data.json"
+import Cart from "../components/Cart";
 
 export default function Homepage() {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -20,28 +21,31 @@ export default function Homepage() {
 
     // Determine the image source based on screen width
     const getImageForScreen = (product) => {
-    if (screenWidth < 768) {
-        return product.image.mobile; // Mobile
-    } else if (screenWidth < 1024) {
-        return product.image.tablet; // Tablet
-    } else {
-        return product.image.desktop; // Desktop
-    }
+        if (screenWidth < 768) {
+            return product.image.mobile; // Mobile
+        } else if (screenWidth < 1024) {
+            return product.image.tablet; // Tablet
+        } else {
+            return product.image.desktop; // Desktop
+        }
     };
 
     return (
-        <main>
-            <h1>Desserts</h1>
+        <main className="homepage">
+            <h1 className="homepage__title">Desserts</h1>
 
-            {data.map((product) => (
+            {data.map((product, index) => (
                 <ProductsCard 
-                    key={product.price}
+                    key={index}
+                    id={product.id}
                     image={getImageForScreen(product)} 
                     name={product.name}
                     category={product.category}
                     price={product.price}
                 />
             ))}
+
+            <Cart />
         </main>
     )
 }
