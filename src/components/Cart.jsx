@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeCompletlyFromCart } from '../redux/cartSlice';
 import emptyCartIcon from "../assets/images/illustration-empty-cart.svg"
 import carbonNeutralIcon from "../assets/images/icon-carbon-neutral.svg"
+import removeItemsIcon from "../assets/images/icon-remove-item.svg"
 import data from "../data.json"
 
 export default function Cart() {
@@ -41,7 +42,7 @@ export default function Cart() {
                                     <p className="price-line__price">@ ${product.price.toFixed(2)}</p>
                                     <p className="price-line__total">${(numberOfRepetitions * product.price).toFixed(2)}</p>
                                 </div>
-                                <div className='btn-remove-from-cart' onClick={(e) => onRemoveItemCompletlyFromCart(product.id, product.price)}>X</div>
+                                <img src={removeItemsIcon} className='btn-remove-from-cart' onClick={(e) => onRemoveItemCompletlyFromCart(product.id, product.price)} />
                             </div>
                         )
                     })}
@@ -55,6 +56,8 @@ export default function Cart() {
                         <img src={carbonNeutralIcon} alt="" />
                         <p>This is a <b>carbon-neutral</b> delivery</p>
                     </div>
+
+                    <button className='cart-list__btn-confirm-order'>Confirm Order</button>
                 </section>
                 : 
                 <section className='cart-list no-items'>

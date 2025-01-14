@@ -65,12 +65,16 @@
                 right: 0;
                 top: 50%;
                 transform: translateY(-50%);
+                border: 1px solid u.$color-secondary-400;
+                border-radius: 50%;
+                padding: 2px;
+                cursor: pointer;
             }
         }
 
         &__total {
             margin-top: 2rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             display: flex;
             flex-wrap: nowrap;
             justify-content: space-between;
@@ -97,6 +101,10 @@
             line-height: 1.19rem;
             display: flex;
             justify-content: center;
+            background-color: u.$color-secondary-50;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
 
             img {
                 margin-right: 7px;
@@ -105,6 +113,18 @@
             b {
                 font-weight: 600;
             }
+        }
+
+        &__btn-confirm-order {
+            border-radius: 62.44rem;
+            border: none;
+            padding: 1rem 1.5rem 1rem 1.5rem;
+            width: 100%;
+            background-color: u.$color-primary;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.31rem;
         }
 
         &__empty-icon {
