@@ -34,6 +34,7 @@ export default function Homepage() {
         <main className="homepage">
             <h1 className="homepage__title">Desserts</h1>
 
+        <section className="product-card-container">
             {data.map((product, index) => (
                 <ProductsCard 
                     key={index}
@@ -44,6 +45,7 @@ export default function Homepage() {
                     price={product.price}
                 />
             ))}
+        </section>
 
             <Cart />
         </main>
