@@ -1,12 +1,14 @@
-
+import { useCartStore } from "../stores/cartStore";
 
 export default function ProductsCard(props) {
+    const addToCart = useCartStore((state) => state.addToCart);
+
     function onAddToCart() {
-        // Dispatch the product to the cart
-        // dispatch(addToCart({
-        //     id: props.id,
-        //     price: props.price
-        // }));
+        // Add the product to the cart
+        addToCart({
+            id: props.id,
+            price: props.price
+        });
     }
 
     return (
