@@ -6,45 +6,40 @@ import data from "../data.json"
 import { useCartStore } from "../stores/cartStore"
 
 export default function Cart() {
-    // Access the cartList from Redux
-    // const cartList = useSelector((state) => state.cart.cartList);
-    // const cartTotal = useSelector((state) => state.cart.cartTotal);
+    // Destructured Zustand store
+    const { cart: {cartList, cartTotal}, removeCompletlyFromCart } = useCartStore();
 
-    const cartList = useCartStore((state) => state.cart.cartList)
-    const cartTotal = useCartStore((state) => state.cart.cartTotal)
-
-    const onRemoveItemCompletlyFromCart = (productId, productPrice) => {
-        // Remove the product completly from Redux memory
-        // dispatch(removeCompletlyFromCart({
-        //     id: productId,
-        //     price: productPrice
-        // }));
-    }
+    // Total quantity of items in cart
+    const totalItemQuantityInCart = cartList.reduce((total, item) => total + item.quantity, 0)
     
     return (
         <section className="cart">
-            <h2 className="cart__title">Your Cart ({cartList.length})</h2>
+            <h2 className="cart__title">Your Cart ({totalItemQuantityInCart})</h2>
 
             {cartList.length ? 
                 <section className='cart-list has-items'>
-                    {[...new Set(cartList)].map((item, index) => { // Using ...new Set(cartList) ensures each product is rendered only once,
-                        // Count the number of repetitions of this item in cartList
-                        const numberOfRepetitions = cartList.filter(id => id === item.id).length;
-
-                        // Find the item in the data array that matches the cart item ID
-                        const product = data.find((product) => product.id === item.id);
+                    {cartList.map(({ id, quantity }) => {
+                        const product = data.find(product => product.id === id);
+                        if (!product) return null; // Prevents rendering undefined products
 
                         return (
-                            <div key={index} className="cart-list__item">
-                                <p className='product_name'>{product.name}</p>
+                            <div key={id} className="cart-list__item">
+                                <p className="product_name">{product.name}</p>
                                 <div className="price-line">
-                                    <p className="price-line__quantity">{item.quantity}x</p>
+                                    <p className="price-line__quantity">{quantity}x</p>
                                     <p className="price-line__price">@ ${product.price.toFixed(2)}</p>
-                                    <p className="price-line__total">${(item.quantity * product.price).toFixed(2)}</p>
+                                    <p className="price-line__total">
+                                        ${(quantity * product.price).toFixed(2)}
+                                    </p>
                                 </div>
-                                <img src={removeItemsIcon} className='btn-remove-from-cart' onClick={(e) => onRemoveItemCompletlyFromCart(product.id, product.price)} />
+                                <button 
+                                    className="btn-remove-from-cart" 
+                                    onClick={() => removeCompletlyFromCart(product.id)}
+                                >
+                                    <img src={removeItemsIcon} alt="" />
+                                </button>
                             </div>
-                        )
+                        );
                     })}
 
                     <div className='cart-list__total'>

@@ -9,13 +9,14 @@
         display: block;
         width: 100%;
         aspect-ratio: 327 / 212;
+        border: 0.13rem solid white;
         border-radius: 8px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
 
         &.exists-in-cart {
-            border: 0.13rem solid u.$color-primary;
+            border-color: u.$color-primary;
         }
     }
 
@@ -40,6 +41,10 @@
             background-color: u.$color-primary;
             color: white;
             justify-content: space-between;
+
+            p {
+                font-weight: 400;
+            }
 
             .products-card__quantity-btn {
                 border-radius: 50%;

@@ -67,8 +67,9 @@
                 transform: translateY(-50%);
                 border: 1px solid u.$color-secondary-400;
                 border-radius: 50%;
-                padding: 2px;
+                padding: 0px 4px;
                 cursor: pointer;
+                background-color: transparent;
             }
         }
 
