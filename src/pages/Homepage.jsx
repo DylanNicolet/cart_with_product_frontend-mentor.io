@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProductsCard from "../components/ProductsCard"
 import data from "../data.json"
 import Cart from "../components/Cart";
+import ConfirmationModal from "../components/ConfirmationModal";
 
 export default function Homepage() {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -32,6 +33,7 @@ export default function Homepage() {
 
     return (
         <main className="homepage">
+            <ConfirmationModal />
             <h1 className="homepage__title">Desserts</h1>
 
             <section className="product-card-container">
