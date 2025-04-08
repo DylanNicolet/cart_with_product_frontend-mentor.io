@@ -4,10 +4,14 @@ import carbonNeutralIcon from "../assets/images/icon-carbon-neutral.svg"
 import removeItemsIcon from "../assets/images/icon-remove-item.svg"
 import data from "../data.json"
 import { useCartStore } from "../stores/cartStore"
+import ConfirmationModal from "../components/ConfirmationModal";
 
 export default function Cart() {
     // Destructured Zustand store
     const { cart: {cartList, cartTotal}, removeCompletlyFromCart } = useCartStore();
+    
+    // States
+    const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
 
     // Total quantity of items in cart
     const totalItemQuantityInCart = cartList.reduce((total, item) => total + item.quantity, 0)
@@ -52,7 +56,7 @@ export default function Cart() {
                         <p>This is a <b>carbon-neutral</b> delivery</p>
                     </div>
 
-                    <button className='cart-list__btn-confirm-order'>Confirm Order</button>
+                    <button className='cart-list__btn-confirm-order' onClick={() => setIsConfirmationModalOpen(true)}>Confirm Order</button>
                 </section>
                 : 
                 <section className='cart-list no-items'>
@@ -60,6 +64,13 @@ export default function Cart() {
                     <p className="cart-list__message">Your added items will appear here</p>
                 </section>
             }
+
+            <ConfirmationModal 
+                isOpen={isConfirmationModalOpen} 
+                onClose={() => setIsConfirmationModalOpen(false)} 
+                cartList={cartList}
+                cartTotal={cartTotal}
+            />
         </section>
     )
 }
