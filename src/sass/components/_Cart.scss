@@ -143,3 +143,11 @@
         }
     }
 }
+
+@include u.desktop-only {
+    .cart {
+        width: 24rem;
+        height: min-content;
+        margin-top: 0;
+    }
+}

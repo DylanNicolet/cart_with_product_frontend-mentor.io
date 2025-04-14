@@ -1,5 +1,11 @@
 @use "../utils" as u;
 
 button:focus, button:visited, button:active{
-  outline: none;
+    outline: none;
+}
+
+@include u.desktop-only {
+    button {
+        cursor: pointer;
+    }
 }

@@ -19,7 +19,7 @@ export default function ConfirmationModal({ isOpen, onClose, cartList, cartTotal
         <dialog id="ConfirmationModal" ref={dialogRef}>
             <header>
                 <img src={confirmationIcon} alt="" className="confirmation-icon" />
-                <h2 className="modal-title">Order<br />Confirmed</h2>
+                <h2 className="modal-title">Order Confirmed</h2>
                 <p className="modal-subtitle">We hope you enjoy your food!</p>
             </header>
 

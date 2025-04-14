@@ -33,20 +33,22 @@ export default function Homepage() {
 
     return (
         <main className="homepage">
-            <h1 className="homepage__title">Desserts</h1>
+            <div className="title-and-cards-container">
+                <h1 className="homepage__title">Desserts</h1>
 
-            <section className="product-card-container">
-                {data.map((product, index) => (
-                    <ProductsCard 
-                        key={index}
-                        id={product.id}
-                        image={getImageForScreen(product)} 
-                        name={product.name}
-                        category={product.category}
-                        price={product.price}
-                    />
-                ))}
-            </section>
+                <section className="product-card-container">
+                    {data.map((product, index) => (
+                        <ProductsCard 
+                            key={index}
+                            id={product.id}
+                            image={getImageForScreen(product)} 
+                            name={product.name}
+                            category={product.category}
+                            price={product.price}
+                        />
+                    ))}
+                </section>
+            </div>
 
             <Cart />
         </main>

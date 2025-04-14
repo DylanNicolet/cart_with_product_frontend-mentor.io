@@ -9,8 +9,8 @@
         display: block;
         width: 100%;
         aspect-ratio: 327 / 212;
-        border: 0.13rem solid white;
-        border-radius: 8px;
+        border: 0.13rem solid transparent;
+        border-radius: 1rem;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -95,6 +95,16 @@
             font-size: 1rem;
             font-weight: 600;
             line-height: 1.31rem;
+        }
+    }
+}
+
+// Tablet styles
+@include u.tablet-only {
+    .products-card {
+        &__img {
+            aspect-ratio: 1 / 1;
+            border-radius: 0.5rem;
         }
     }
 }

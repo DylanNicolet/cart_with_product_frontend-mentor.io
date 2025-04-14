@@ -1,13 +1,42 @@
 @use "../utils" as u;
 
 .homepage {
-	background-color: u.$color-secondary-50;
-	padding: 1.3rem 1.5rem;
+    padding: 1.3rem 1.5rem;
 
-	&__title {
-		color: u.$color-secondary-900;
-		font-size: 2.5rem;
-		font-weight: 700;
-		margin-bottom: 1.9rem;
-	}
+    &__title {
+        color: u.$color-secondary-900;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.9rem;
+    }
+}
+
+// Tablet styles
+@include u.tablet-only {
+    .homepage {
+        padding: 2.5rem;
+
+        .product-card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 24px;
+        }
+    }
+}
+
+// Dekstop styles
+@include u.desktop-only {
+    .homepage {
+        padding: 5.5rem 2.5rem 5.5rem 2.5rem;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 2rem;
+        max-width: 1216px;
+        margin: auto;
+
+        .title-and-cards-container {
+            flex-grow: 1;
+        }
+    }
 }

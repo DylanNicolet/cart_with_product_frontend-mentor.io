@@ -5,13 +5,31 @@
     max-height: 90vh;
     width: 100%;
     max-width: none;
-    overflow-y: scroll;
     border: none;
     border-top-left-radius: 0.75rem;
     border-top-right-radius: 0.75rem;
     padding: 2.5rem 1.5rem 1.5rem 1.5rem;
     margin: auto auto 0 auto;
     text-align: left;
+    overflow-y: auto;
+    scrollbar-width: thin; // for Firefox
+    scrollbar-color: #ccc transparent; // for Firefox
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 2rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #aaa;
+        border-radius: 2rem;
+        border: 2px solid transparent;
+        background-clip: content-box;
+    }
 
     &::backdrop {
         background: rgba(0, 0, 0, 0.5);
@@ -32,6 +50,7 @@
             font-weight: 700;
             line-height: 120%;
             margin-bottom: 0.5rem;
+            width: 90%;
         }
 
         .modal-subtitle {
@@ -154,5 +173,25 @@
             font-weight: 500;
             line-height: 1.31rem;
         }
+    }
+}
+
+// Tablet styles
+@include u.tablet-only {
+    #ConfirmationModal {
+        width: calc(100% - 5rem);
+        top: 50%;
+        bottom: unset;
+        transform: translateY(-50%);
+        margin: auto;
+        padding: 2.5rem;
+        border-radius: 0.75rem;
+    }
+}
+
+// Desktop styles
+@include u.desktop-only {
+    #ConfirmationModal {
+        width: 37rem;
     }
 }
